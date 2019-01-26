@@ -20,7 +20,7 @@ Step 2. Add the dependency
 
 ```gradle
 dependencies{
-    implementation 'com.github.Deishelon:RxDownload:Tag'
+    implementation 'com.github.Deishelon:RxDownload:1.2.9'
 }
 ```
 
