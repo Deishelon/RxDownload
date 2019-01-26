@@ -19,15 +19,15 @@ open class Status(var downloadSize: Long = 0L,
         return formatSize(downloadSize, s)
     }
 
-    fun formatString(): String {
-        return formatDownloadSize() + "/" + formatTotalSize()
+    fun formatString(s: Int = 1): String {
+        return formatDownloadSize(s) + "/" + formatTotalSize(s)
     }
 
     fun percent(): Double {
         return if (totalSize == 0L) {
             0.0
         } else {
-            downloadSize * 1.0 / totalSize
+            (downloadSize * 1.0 / totalSize) * 100.0
         }
     }
 
