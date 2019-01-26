@@ -58,13 +58,13 @@ Step 2. Subscribe to the mission updates
 
 Step 3. Start download
 
-```java
+```kotlin
 RxDownload.start(mission).subscribe()
 ```
 
 Stop download
 
-```java
+```kotlin
 RxDownload.stop(mission).subscribe()
 ```
 
@@ -91,6 +91,34 @@ DownloadConfig.init(builder)
 ```
 
 For more APIs please see RxDownload.kt
+
+
+### Override
+You can configure `Mission` so that if file exists it will be re-downloaded.
+If not specified - false
+
+```kotlin
+val mission = Mission(...)
+mission.overwrite = Boolen (true/false)
+```
+
+### Pretty format
+Ypu can download status with n decimal point
+
+Default is 1 decimal point
+
+```kotlin
+val percent = status.percentPretty(INT_DECIMAL_POINT_FORMAT) // returns `String` i.e 12.2
+
+val rawPercent = status.percent() // returns `Double`
+
+val totalSize = status.formatTotalSize(INT_DECIMAL_POINT_FORMAT) // returns `String` i.e 22.2 MB
+
+val dwnSoFarSize = status.formatDownloadSize(INT_DECIMAL_POINT_FORMAT) // returns `String` i.e 44.4 MB
+
+val progress = status.formatString(INT_DECIMAL_POINT_FORMAT) // returns `String` i.e 44.4 MB / 102.3 MB
+```
+
 
 ### Configuration (optional)
 
