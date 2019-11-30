@@ -2,7 +2,6 @@ package zlc.season.rxdownload3.core
 
 import zlc.season.rxdownload3.helper.formatSize
 import zlc.season.rxdownload3.helper.roundTo
-import java.text.NumberFormat.getPercentInstance
 
 
 open class Status(var downloadSize: Long = 0L,
@@ -34,45 +33,61 @@ open class Status(var downloadSize: Long = 0L,
     fun percentPretty(s: Int = 1): String {
         return "${percent().roundTo(s)}"
     }
+
+    open fun getStatusString() = "Status"
 }
 
 class Normal(status: Status) : Status(status) {
+    override fun getStatusString() = "Normal"
+
     override fun toString(): String {
         return "Normal"
     }
 }
 
 class Suspend(status: Status) : Status(status) {
+    override fun getStatusString() = "Suspend"
+
     override fun toString(): String {
         return "Suspend"
     }
 }
 
 class Waiting(status: Status) : Status(status) {
+    override fun getStatusString() = "Waiting"
+
     override fun toString(): String {
         return "Waiting"
     }
 }
 
 class Downloading(status: Status) : Status(status) {
+    override fun getStatusString() = "Downloading"
+
     override fun toString(): String {
         return "Downloading: ${formatString()}"
     }
 }
 
 class Failed(status: Status, val throwable: Throwable) : Status(status) {
+    override fun getStatusString() = "Failed"
+
     override fun toString(): String {
         return "Failed"
     }
 }
 
 class Succeed(status: Status) : Status(status) {
+    override fun getStatusString() = "Succeed"
+
     override fun toString(): String {
         return "Succeed"
     }
 }
 
 class Deleted(status: Status) : Status(status) {
+    override fun getStatusString() = "Deleted"
+
     override fun toString(): String {
         return "Deleted"
     }
